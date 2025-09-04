@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievers - Institute of Life Sciences</title>
+    <link rel="stylesheet" type="text/css" href="ils.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            z-index: 100;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+        }
+        
+        .dropdown-content a {
+            color: #555;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(113,97,239,0.05);
+            color: #7161ef;
+            padding-left: 25px;
+        }
+        
+        /* Add short underline decoration */
+        .dropdown-content a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 25px;
+            background: #7161ef;
+            transition: width 0.3s ease;
+        }
+        
+        .dropdown-content a:hover::after {
+            width: 30px; /* Short underline - adjust length as needed */
+        }
+        
+        .dropdown > a::after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+
+        /* Enhanced styles for achievers page */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9ff;
+            background-image: radial-gradient(circle at 10% 90%, rgba(113,97,239,0.03) 0%, transparent 30%), 
+                              radial-gradient(circle at 90% 10%, rgba(113,97,239,0.03) 0%, transparent 30%);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, rgba(113,97,239,0.1) 0%, rgba(113,97,239,0.3) 100%);
+            border-radius: 0 0 50% 50%/0 0 100px 100px;
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(113,97,239,0.1);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .heading-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            font-weight: 600;
+            font-size: 32px;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        section {
+            padding: 40px 0 80px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(113,97,239,0.2);
+            height: 550px;
+            background: white;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(113,97,239,0.1);
+        }
+
+        .slider-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(113,97,239,0.3);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.45, 0, 0.55, 1);
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            transition: transform 1.2s ease;
+            background-color: #f8f8ff;
+            padding: 20px 0;
+        }
+
+        .slide:hover img {
+            transform: scale(1.03);
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            color: white;
+            padding: 40px 30px 30px;
+            text-align: center;
+            transform: translateY(0);
+            transition: all 0.5s ease;
+            backdrop-filter: blur(3px);
+        }
+
+        .slide:hover .slide-caption {
+            transform: translateY(-10px);
+            padding-bottom: 40px;
+        }
+
+        .slide-caption h4 {
+            margin: 0 0 15px;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+        }
+
+        .slide-caption .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #7161ef, #9e94ff);
+            margin: 15px auto;
+            border-radius: 3px;
+        }
+
+        .slide-caption p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #7161ef 0%, #5e50d8 100%);
+            padding: 80px 0;
+            text-align: center;
+            margin-top: 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(113,97,239,0.4);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .achiever-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            margin-bottom: 30px;
+            background: white;
+            height: 380px;
+        }
+
+        .achiever-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(113,97,239,0.2);
+        }
+
+        .achiever-card img {
+            transition: all 0.5s ease;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .achiever-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .achiever-info {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .achiever-info h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .achiever-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #7161ef;
+        }
+
+        .achievement-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(113,97,239,0.9);
+            color: white;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            padding: 30px;
+            text-align: center;
+            transform: translateY(20px);
+        }
+
+        .achiever-card:hover .achievement-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .achievement-overlay h4 {
+            margin: 0 0 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .achievement-overlay p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: white;
+            margin: 15px auto;
+        }
+
+        .accent-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(113,97,239,0.1) 0%, rgba(113,97,239,0.2) 100%);
+            z-index: -1;
+            animation: pulse 8s infinite alternate ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.05); opacity: 0.7; }
+        }
+        
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            top: 30%;
+            left: -150px;
+        }
+        
+        .accent-2 {
+            width: 400px;
+            height: 400px;
+            bottom: 5%;
+            right: -200px;
+        }
+
+        .btn.light {
+            background: white;
+            color: #7161ef;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+        }
+
+        .btn.light:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 10;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .slider-container:hover .slider-nav {
+            opacity: 1;
+        }
+
+        .slider-nav button {
+            background: linear-gradient(135deg, #7161ef 0%, #5e50d8 100%);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .slider-nav button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(113,97,239,0.4);
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+            border: 2px solid transparent;
+        }
+
+        .slider-dot:hover {
+            opacity: 0.9;
+            transform: scale(1.1);
+        }
+
+        .slider-dot.active {
+            background: #7161ef;
+            transform: scale(1.2);
+            opacity: 1;
+            border: 2px solid rgba(255,255,255,0.6);
+            box-shadow: 0 0 10px rgba(113,97,239,0.5);
+        }
+
+        .slider-counter {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 500;
+            color: #555;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* Remove original achiever cards display from visible area */
+        .achiever-card-container {
+            display: none;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            margin-top: 80px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Typography enhancements */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .page-header {
+                padding: 100px 0 60px;
+            }
+
+            .slider-container {
+                height: 400px;
+            }
+
+            .call-to-action {
+                padding: 60px 20px;
+                margin: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative background elements -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="ils.html">ILS</a>
+            </div>
+
+            <div class="menu-items">
+                <a href="ils.html">About</a>
+                <a href="featured.html">Feature</a>
+                <a href="achievers.html" class="active">Achievers</a>
+                <div class="dropdown">
+                    <a href="events.html">Events</a>
+                    <div class="dropdown-content">
+                        <a href="birthday-celebrants.html">Birthday Celebrants</a>
+                        <a href="gnb-pup-lopez.html">G. & Bb. PUP Lopez</a>
+                        <a href="ame-knb.html">GAME KNB</a>
+                        <a href="indak-festival.html">Indak Festival</a>
+                        <a href="intramurals.html">Intramurals</a>
+                    </div>
+                </div>
+                <a href="featured.html" class="btn">Explore</a>
+            </div>
+
+            <div class="menu-icon">
+                <img src="IMG/menu-alt-02-svgrepo-com.png" alt="Menu">
+            </div>
+        </nav>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="heading-container animate__animated animate__fadeIn">
+                <h1 style="text-align: center; font-weight: 700; margin-bottom: 15px; font-size: 42px; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Our Star Achievers</h1>
+                <div style="width: 100px; height: 4px; background: linear-gradient(to right, #7161ef, #9e94ff); margin: 0 auto 25px; border-radius: 2px;"></div>
+                <p style="text-align: center; max-width: 800px; margin: 20px auto; font-size: 18px; line-height: 1.8; color: #444;">We celebrate the outstanding accomplishments of our students who exemplify excellence in academics, research, and leadership. These brilliant minds represent the future of biological sciences.</p>
+            </div>
+        </div>
+    </header>
+
+    <section style="padding: 40px 0 80px; background: transparent;">
+        <div class="container">
+            <div class="heading-container animate__animated animate__fadeInUp">
+                <h2 class="section-title" style="background: linear-gradient(135deg, #7161ef 0%, #5e50d8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 2px 4px rgba(113,97,239,0.2);">Academic Excellence</h2>
+                <p style="max-width: 700px; margin: 0 auto 50px; text-align: center; font-size: 17px; color: #555;">Our top-performing students have demonstrated exceptional dedication to their studies, achieving remarkable results that set them apart as future leaders in their fields.</p>
+            </div>
+            
+            <!-- Image Slider -->
+            <div class="slider-container animate__animated animate__fadeInUp" style="background: transparent; box-shadow: none; border: none;">
+                <div class="slider">
+                    <div class="slide">
+                        <img src="events.picture/academic achievers/476186338_577548288609022_1970289727708804588_n.jpg" alt="Academic Achiever">
+                        
+                    </div>
+                    
+                    <div class="slide">
+                        <img src="events.picture/academic achievers/476211709_577548291942355_6867180282501938345_n.jpg" alt="Research Excellence">
+                    </div>
+                    
+                    <div class="slide">
+                        <img src="events.picture/academic achievers/476164197_577548205275697_1636739928810559475_n.jpg" alt="Academic Scholar">
+                        
+                    </div>
+
+                    <div class="slide">
+                        <img src="events.picture/academic achievers/476166073_577548401942344_1291714723411625639_n.jpg" alt="Leadership Awardee">
+                        
+                    </div>
+
+                    <div class="slide">
+                        <img src="events.picture/academic achievers/475981568_577548195275698_2746083837067193422_n.jpg" alt="Research Assistant">
+                        <div class="slide-caption">
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="events.picture/academic achievers/476226288_577548388609012_1592776980552727917_n.jpg" alt="Innovation Award">
+                        <div class="slide-caption">
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="events.picture/academic achievers/476136353_577547938609057_4337258923817610165_n.jpg" alt="Academic Excellence">
+                    </div>
+
+                    <div class="slide">
+                        <img src="events.picture/academic achievers/476229023_577548371942347_393192339103480574_n.jpg" alt="Research Excellence">
+                        
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <button class="prev-slide">❮</button>
+                    <button class="next-slide">❯</button>
+                </div>
+                
+                <div class="slider-counter">
+                    <span class="current-slide">1</span> / <span class="total-slides">8</span>
+                </div>
+            </div>
+            
+            <div class="slider-dots" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+            
+            <!-- Hide original cards but keep them in the HTML -->
+            <div class="achiever-card-container" style="display: none;">
+                <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 40px;">
+                    <!-- Original cards remain here but are hidden -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="call-to-action animate__animated animate__fadeIn">
+            <h2 style="color: white; font-size: 36px; margin-bottom: 15px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Are you our next achiever?</h2>
+            <p style="max-width: 600px; margin: 20px auto; color: white; font-size: 18px; line-height: 1.7; opacity: 0.9;">Work hard, aim high, and you could be featured on this page! We recognize and celebrate excellence in all its forms.</p>
+            <a href="ils.html" class="btn light">Join Us Today</a>
+        </div>
+    </div>
+
+    <footer style="margin-top: 80px;">
+        <div class="container">
+            <div class="top">
+                <div class="left">
+                    <a href="ils.html" class="logo">ILS</a>
+                    <p>"When life calls ILS stands tall"</p>
+                </div>
+    
+                <div class="right">
+                    <p>Follow us on</p>
+                    <div class="social">
+                        <a href="#">
+                            <img src="IMG/facebook-1-svgrepo-com.svg" alt="Facebook">
+                        </a>
+                        <a href="#">
+                            <img src="IMG/telegram-svgrepo-com.svg" alt="Telegram">
+                        </a>
+                        <a href="#">
+                            <img src="IMG/tiktok-svgrepo-com.svg" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="copyright">
+                This website was developed by Carranza from DCpET 2-1 © 2025
+            </div>
+        </div>
+    </footer>
+    
+    <script src="ils.js"></script>
+    <script>
+        // Simple JavaScript to enable smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.menu-items').classList.toggle('active');
+        });
+
+        // Enhanced Slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev-slide');
+            const nextBtn = document.querySelector('.next-slide');
+            const currentSlideEl = document.querySelector('.current-slide');
+            const totalSlidesEl = document.querySelector('.total-slides');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+            
+            // Set total slides
+            totalSlidesEl.textContent = slideCount;
+            
+            // Set initial position
+            updateSlider();
+            
+            // Event listeners for navigation
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlider();
+                resetInterval();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+                resetInterval();
+            });
+            
+            // Event listeners for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                    resetInterval();
+                });
+            });
+            
+            // Auto-advance slides every 5 seconds
+            startInterval();
+            
+            // Pause auto-advance on hover
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            // Resume auto-advance when mouse leaves
+            slider.addEventListener('mouseleave', () => {
+                startInterval();
+            });
+            
+            function startInterval() {
+                slideInterval = setInterval(() => {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    updateSlider();
+                }, 5000);
+            }
+            
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+            
+            // Update slider position and active dot
+            function updateSlider() {
+                // Apply smoother animation for transition
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                currentSlideEl.textContent = currentSlide + 1;
+                
+                // Update active dot with enhanced animation
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                    updateSlider();
+                    resetInterval();
+                } else if (e.key === 'ArrowRight') {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    updateSlider();
+                    resetInterval();
+                }
+            });
+            
+            // Add swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    // Swipe left, go next
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    updateSlider();
+                    resetInterval();
+                }
+                if (touchEndX > touchStartX + 50) {
+                    // Swipe right, go previous
+                    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                    updateSlider();
+                    resetInterval();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institute of Life Sciences - PUP Lopez</title>
+    <link rel="stylesheet" type="text/css" href="ils.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            z-index: 100;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+        }
+        
+        .dropdown-content a {
+            color: #555;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(113,97,239,0.05);
+            color: #7161ef;
+            padding-left: 25px;
+        }
+        
+        /* Add short underline decoration */
+        .dropdown-content a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 25px;
+            background: #7161ef;
+            transition: width 0.3s ease;
+        }
+        
+        .dropdown-content a:hover::after {
+            width: 30px; /* Short underline - adjust length as needed */
+        }
+        
+        .dropdown > a::after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="ils.html">ILS</a>
+            </div>
+
+            <div class="menu-items">
+                <a href="ils.html" class="active">About</a>
+                <a href="featured.html">Feature</a>
+                <a href="achievers.html">Achievers</a>
+                <div class="dropdown">
+                    <a href="events.html">Events</a>
+                    <div class="dropdown-content">
+                        <a href="birthday-celebrants.html">Birthday Celebrants</a>
+                        <a href="gnb-pup-lopez.html">G. & Bb. PUP Lopez</a>
+                        <a href="ame-knb.html">GAME KNB</a>
+                        <a href="indak-festival.html">Indak Festival</a>
+                        <a href="intramurals.html">Intramurals</a>
+                    </div>
+                </div>
+                <a href="featured.html" class="btn">Explore</a>
+            </div>
+
+            <div class="menu-icon">
+                <img src="IMG/menu-alt-02-svgrepo-com.png" alt="Menu">
+            </div>
+        </nav>
+
+        <header>
+            <div class="left animate__animated animate__fadeInLeft">
+                <h1>Institute of Life Sciences</h1>
+                <h2>PUP Lopez Campus</h2>
+                <p class="sub-heading">"When life calls ILS stands tall"</p>
+
+                <div class="buttons">
+                    <a href="featured.html" class="btn">Dive In</a>
+                    <a href="featured.html" class="btn outlined">Explore</a>
+                </div>
+            </div>
+
+            <div class="right animate__animated animate__fadeInRight">
+                <img src="IMG/ils-bg.png" alt="ILS Image">
+            </div>
+            <div class="bg-color"></div>
+        </header>
+    </div>
+
+    <div class="featured animate__animated animate__fadeInUp">
+        <div class="container">
+            <h2>Featured On</h2>
+            <div class="logos">
+                <img src="IMG/facebook.png" alt="Facebook">
+                <img src="IMG/telegram.png" alt="Telegram">
+                <img src="IMG/tiktok.png" alt="TikTok">
+                <img src="IMG/youtube.png" alt="YouTube">
+            </div>
+        </div>
+    </div>
+
+    <section id="about">
+        <div class="container">
+            <div class="left animate__animated animate__fadeInLeft">
+                <h2>Unlock the Secrets of Life with a BS in Biology!</h2>
+                <p>Dive into the fascinating world of living organisms, from microscopic cells to entire ecosystems. Whether you dream of curing diseases, saving the environment, or unlocking genetic mysteries, this degree is your gateway to endless possibilities in science, healthcare, and beyond! 🚀</p>
+
+                <div class="features-container">
+                    <div class="feature">
+                        <h3>Mission</h3>
+                        <p>The program is committed to providing a strong foundation in biological principles, research methodologies, and critical thinking to prepare graduates for diverse careers in healthcare, biotechnology, environmental conservation, and scientific research. It strives to cultivate a culture of ethical scientific inquiry, sustainability, and lifelong learning while encouraging interdisciplinary collaboration and real-world application of biological sciences for the betterment of society.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h3>Vision</h3>
+                        <p>To be a leading institution in biological sciences, fostering innovation, research, and environmental stewardship to address global challenges and advance scientific knowledge for the betterment of society.</p>
+                    </div>
+                </div>
+                
+                <a href="featured.html" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="top">
+                <div class="left">
+                    <a href="#" class="logo">ILS</a>
+                    <p>"When life calls ILS stands tall"</p>
+                </div>
+
+                <div class="right">
+                    <p>Follow us on</p>
+                    <div class="social">
+                        <a href="#">
+                            <img src="IMG/facebook-1-svgrepo-com.svg" alt="Facebook">
+                        </a>
+                        <a href="#">
+                            <img src="IMG/telegram-svgrepo-com.svg" alt="Telegram">
+                        </a>
+                        <a href="#">
+                            <img src="IMG/tiktok-svgrepo-com.svg" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                This website was developed by Carranza from DCpET 2-1 © 2025
+            </div>
+        </div>
+    </footer>
+
+    <script src="ils.js"></script>
+    <script>
+        // Simple JavaScript to enable smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.menu-items').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

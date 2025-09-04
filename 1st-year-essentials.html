@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Year Essentials - Institute of Life Sciences</title>
+    <link rel="stylesheet" type="text/css" href="ils.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Center all content */
+        body {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9ff;
+            overflow-x: hidden;
+        }
+        
+        /* Decorative elements */
+        .accent-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(113,97,239,0.1) 0%, rgba(113,97,239,0.2) 100%);
+            z-index: -1;
+            animation: pulse 8s infinite alternate ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.05); opacity: 0.7; }
+        }
+        
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            top: 120px;
+            left: -150px;
+        }
+        
+        .accent-2 {
+            width: 400px;
+            height: 400px;
+            bottom: 30%;
+            right: -200px;
+        }
+        
+        .accent-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 5%;
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        .delay-1 {
+            animation-delay: 1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 2s;
+        }
+        
+        /* Enhanced card styling */
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(113,97,239,0.2);
+        }
+        
+        /* Improved heading styles */
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            color: #7161ef;
+        }
+        
+        .section-heading:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #7161ef;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Enhanced button styles */
+        .enhanced-btn {
+            background: linear-gradient(135deg, #7161ef 0%, #5e50d8 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(113,97,239,0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+        }
+        
+        .enhanced-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(135deg, #5e50d8 0%, #433aaa 100%);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .enhanced-btn:hover:before {
+            width: 100%;
+        }
+        
+        .enhanced-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(113,97,239,0.6);
+        }
+        
+        .container {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        section p, section h2, section h3, section h4 {
+            text-align: center;
+        }
+        
+        ul {
+            display: inline-block;
+            text-align: left;
+        }
+        
+        /* Ensure flexbox containers center content */
+        section > div > div {
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: #555;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(113,97,239,0.05);
+            color: #7161ef;
+            padding-left: 25px;
+        }
+        
+        /* Add short underline decoration */
+        .dropdown-content a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 25px;
+            background: #7161ef;
+            transition: width 0.3s ease;
+        }
+        
+        .dropdown-content a:hover::after {
+            width: 30px; /* Short underline - adjust length as needed */
+        }
+        
+        .dropdown > a::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative background elements -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+    <div class="accent-circle accent-3"></div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="ils.html">ILS</a>
+            </div>
+
+            <div class="menu-items">
+                <a href="ils.html">About</a>
+                <a href="featured.html">Feature</a>
+                <a href="achievers.html">Achievers</a>
+                <div class="dropdown">
+                    <a href="events.html">Events</a>
+                    <div class="dropdown-content">
+                        <a href="birthday-celebrants.html">Birthday Celebrants</a>
+                        <a href="gnb-pup-lopez.html">G. & Bb. PUP Lopez</a>
+                        <a href="ame-knb.html">GAME KNB</a>
+                        <a href="indak-festival.html">Indak Festival</a>
+                        <a href="intramurals.html">Intramurals</a>
+                    </div>
+                </div>
+                <a href="featured.html" class="btn">Explore</a>
+            </div>
+
+            <div class="menu-icon">
+                <img src="IMG/menu-alt-02-svgrepo-com.png" alt="Menu">
+            </div>
+        </nav>
+    </div>
+
+    <header style="padding-top: 120px; margin-bottom: 60px; background: linear-gradient(135deg, rgba(113,97,239,0.1) 0%, rgba(113,97,239,0.3) 100%); border-radius: 0 0 50% 50%/0 0 100px 100px; text-align: center; position: relative; overflow: hidden;">
+        <div class="container" style="padding: 60px 0;">
+            <div class="heading-container animate__animated animate__fadeIn">
+                <h1 style="text-align: center; position: relative; display: inline-block; margin-bottom: 15px; color: #333; font-weight: 700;">1st Year Essentials</h1>
+                <div style="width: 80px; height: 4px; background: linear-gradient(to right, #7161ef, #5e50d8); margin: 0 auto 20px;"></div>
+                <p style="text-align: center; max-width: 800px; margin: 20px auto; font-size: 18px; line-height: 1.6; color: #444;">Everything you need to know and have for your first year as a Biology student at PUP Lopez Campus.</p>
+            </div>
+        </div>
+    </header>
+
+    <section style="background-color: #f5f5f5; padding: 60px 0; text-align: center; background-image: linear-gradient(135deg, rgba(113,97,239,0.03) 0%, rgba(113,97,239,0.07) 100%); position: relative; overflow: hidden;">
+        <div class="container">
+            <div class="heading-container animate__animated animate__fadeInUp">
+                <h2 class="section-heading">Laboratory Equipment Checklist</h2>
+                <p>Essential tools and equipment you'll need for your laboratory classes.</p>
+            </div>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 40px auto; max-width: 1100px; justify-content: center;">
+                <div class="animate__animated animate__fadeInUp card floating" style="flex: 1; min-width: 250px; padding: 30px; text-align: center;">
+                    <h3 style="text-align: center; color: #7161ef; margin-bottom: 20px; position: relative; display: inline-block;">Microscopy Tools</h3>
+                    <div style="width: 40px; height: 3px; background: linear-gradient(to right, #7161ef, #5e50d8); margin: 0 auto 20px;"></div>
+                    <ul style="line-height: 1.8; padding-left: 20px; display: inline-block; text-align: left;">
+                        <li><strong>Microscope slide box</strong> (50 pcs)</li>
+                        <li><strong>Cover slips</strong> (100 pcs)</li>
+                        <li><strong>Lens cleaning paper</strong></li>
+                        <li><strong>Dropper bottles</strong> for stains (3 pcs)</li>
+                        <li><strong>Slide preparation kit</strong></li>
+                        <li><strong>Laboratory notebook</strong> with gridlines</li>
+                        <li><strong>Drawing pencils</strong> (HB, 2B)</li>
+                    </ul>
+                </div>
+                
+                <div class="animate__animated animate__fadeInUp card floating delay-1" style="flex: 1; min-width: 250px; padding: 30px; text-align: center; animation-delay: 0.2s;">
+                    <h3 style="text-align: center; color: #7161ef; margin-bottom: 20px; position: relative; display: inline-block;">Safety Equipment</h3>
+                    <div style="width: 40px; height: 3px; background: linear-gradient(to right, #7161ef, #5e50d8); margin: 0 auto 20px;"></div>
+                    <ul style="line-height: 1.8; padding-left: 20px; display: inline-block; text-align: left;">
+                        <li><strong>Laboratory coat</strong> (white, long sleeves)</li>
+                        <li><strong>Safety goggles</strong> (clear, anti-fog)</li>
+                        <li><strong>Latex gloves</strong> (box of 100)</li>
+                        <li><strong>Face mask</strong> (box of 50)</li>
+                        <li><strong>Closed-toe shoes</strong> (non-slip)</li>
+                        <li><strong>Hair ties</strong> (for long hair)</li>
+                        <li><strong>First aid kit</strong> (small, personal)</li>
+                    </ul>
+                </div>
+                
+                <div class="animate__animated animate__fadeInUp card floating delay-2" style="flex: 1; min-width: 250px; padding: 30px; text-align: center; animation-delay: 0.4s;">
+                    <h3 style="text-align: center; color: #7161ef; margin-bottom: 20px; position: relative; display: inline-block;">Dissection Tools</h3>
+                    <div style="width: 40px; height: 3px; background: linear-gradient(to right, #7161ef, #5e50d8); margin: 0 auto 20px;"></div>
+                    <ul style="line-height: 1.8; padding-left: 20px; display: inline-block; text-align: left;">
+                        <li><strong>Dissection kit</strong> (scissors, probes, forceps)</li>
+                        <li><strong>Scalpel</strong> with replacement blades</li>
+                        <li><strong>Dissection tray</strong> (with wax bottom)</li>
+                        <li><strong>Specimen pins</strong> (box of 100)</li>
+                        <li><strong>Specimen storage containers</strong> (3 pcs)</li>
+                        <li><strong>Disposable aprons</strong> (pack of 10)</li>
+                        <li><strong>Fine-pointed scissors</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 60px 0; text-align: center; position: relative; overflow: hidden; background-image: radial-gradient(circle at 10% 90%, rgba(113,97,239,0.05) 0%, transparent 30%), radial-gradient(circle at 90% 10%, rgba(113,97,239,0.05) 0%, transparent 30%);">
+        <div class="container">
+            <div class="heading-container animate__animated animate__fadeInUp">
+                <h2 class="section-heading">Essential Textbooks & Resources</h2>
+                <p>Recommended reading materials and digital resources for your first year courses.</p>
+            </div>
+            
+            <div class="card animate__animated animate__fadeInUp" style="margin: 40px auto; max-width: 1100px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                <div style="padding: 30px; text-align: center;">
+                    <h3 style="color: #7161ef; margin-bottom: 20px; text-align: center; position: relative; display: inline-block;">Core Textbooks</h3>
+                    <div style="width: 40px; height: 3px; background: linear-gradient(to right, #7161ef, #5e50d8); margin: 0 auto 20px;"></div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
+                        <div class="card" style="flex: 1; min-width: 250px; text-align: left; padding: 20px; border: 1px solid #f0f0f0; border-radius: 10px; transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(113,97,239,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <h4 style="color: #333; margin-bottom: 10px;">Campbell Biology (12th Edition)</h4>
+                            <p>Authors: Lisa A. Urry, Michael L. Cain, Steven A. Wasserman, et al.</p>
+                            <p>Publisher: Pearson</p>
+                            <p style="color: #7161ef; margin-top: 15px;"><strong>Required for:</strong> General Biology I & II</p>
+                        </div>
+                        
+                        <div class="card" style="flex: 1; min-width: 250px; text-align: left; padding: 20px; border: 1px solid #f0f0f0; border-radius: 10px; transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(113,97,239,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <h4 style="color: #333; margin-bottom: 10px;">Human Anatomy & Physiology (12th Edition)</h4>
+                            <p>Authors: Elaine N. Marieb, Katja Hoehn</p>
+                            <p>Publisher: Pearson</p>
+                            <p style="color: #7161ef; margin-top: 15px;"><strong>Required for:</strong> Human Anatomy & Physiology</p>
+                        </div>
+                        
+                        <div class="card" style="flex: 1; min-width: 250px; text-align: left; padding: 20px; border: 1px solid #f0f0f0; border-radius: 10px; transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(113,97,239,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <h4 style="color: #333; margin-bottom: 10px;">Principles of Chemistry (3rd Edition)</h4>
+                            <p>Authors: Nivaldo J. Tro</p>
+                            <p>Publisher: Pearson</p>
+                            <p style="color: #7161ef; margin-top: 15px;"><strong>Required for:</strong> General Chemistry I & II</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card animate__animated animate__fadeInUp" style="margin: 40px auto; max-width: 1100px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                <div style="padding: 30px; text-align: center;">
+                    <h3 style="color: #7161ef; margin-bottom: 20px; text-align: center; position: relative; display: inline-block;">Digital Resources</h3>
+                    <div style="width: 40px; height: 3px; background: linear-gradient(to right, #7161ef, #5e50d8); margin: 0 auto 20px;"></div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
+                        <div class="card" style="flex: 1; min-width: 250px; text-align: left; padding: 20px; border: 1px solid #f0f0f0; border-radius: 10px; transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(113,97,239,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <h4 style="color: #333; margin-bottom: 10px;">JSTOR & PubMed Access</h4>
+                            <p>Access to scientific journals and research papers. Login credentials will be provided during orientation.</p>
+                        </div>
+                        
+                        <div class="card" style="flex: 1; min-width: 250px; text-align: left; padding: 20px; border: 1px solid #f0f0f0; border-radius: 10px; transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(113,97,239,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <h4 style="color: #333; margin-bottom: 10px;">Virtual Lab Simulations</h4>
+                            <p>Online platform for practicing lab techniques and experiments. Subscription provided by the department.</p>
+                        </div>
+                        
+                        <div class="card" style="flex: 1; min-width: 250px; text-align: left; padding: 20px; border: 1px solid #f0f0f0; border-radius: 10px; transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(113,97,239,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <h4 style="color: #333; margin-bottom: 10px;">Mobile Apps</h4>
+                            <p>Recommended apps include Cell Biology 3D, Anatomy 3D Atlas, and Chemistry AR. Available for both iOS and Android.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #f5f5f5; padding: 60px 0; text-align: center; position: relative; overflow: hidden; background-image: linear-gradient(135deg, rgba(113,97,239,0.03) 0%, rgba(113,97,239,0.07) 100%);">
+        <div class="container">
+            <div class="heading-container animate__animated animate__fadeInUp">
+                <h2 class="section-heading">Where to Purchase</h2>
+                <p>Recommended locations to purchase your equipment and textbooks.</p>
+            </div>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 40px auto; max-width: 1100px; justify-content: center;">
+                <div class="animate__animated animate__fadeInUp card floating" style="flex: 1; min-width: 300px; padding: 30px; text-align: center;">
+                    <h3 style="text-align: center; color: #7161ef; margin-bottom: 20px; position: relative; display: inline-block;">On-Campus Resources</h3>
+                    <div style="width: 40px; height: 3px; background: linear-gradient(to right, #7161ef, #5e50d8); margin: 0 auto 20px;"></div>
+                    <ul style="line-height: 1.8; padding-left: 20px; display: inline-block; text-align: left;">
+                        <li><strong>Campus Bookstore</strong> - Located at the Student Center, Ground Floor</li>
+                        <li><strong>Biology Department Store</strong> - Science Building, Room 103</li>
+                        <li><strong>University Co-op</strong> - Main Building, East Wing</li>
+                    </ul>
+                    <p style="margin-top: 15px; text-align: center;">All on-campus stores offer student discounts with valid ID.</p>
+                </div>
+                
+                <div class="animate__animated animate__fadeInUp card floating delay-1" style="flex: 1; min-width: 300px; padding: 30px; text-align: center; animation-delay: 0.2s;">
+                    <h3 style="text-align: center; color: #7161ef; margin-bottom: 20px; position: relative; display: inline-block;">Off-Campus Options</h3>
+                    <div style="width: 40px; height: 3px; background: linear-gradient(to right, #7161ef, #5e50d8); margin: 0 auto 20px;"></div>
+                    <ul style="line-height: 1.8; padding-left: 20px; display: inline-block; text-align: left;">
+                        <li><strong>Scientific Supply Store</strong> - Located 2 blocks from campus</li>
+                        <li><strong>Medical Supply Center</strong> - Downtown, offers student discounts</li>
+                        <li><strong>Online Retailers</strong> - Amazon, LabSupplies.ph, ScienceKits.com</li>
+                    </ul>
+                    <p style="margin-top: 15px; text-align: center;">Check with senior students for recommendations on the best deals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #7161ef; color: white; padding: 60px 0; text-align: center; position: relative; overflow: hidden;">
+        <div class="accent-circle" style="width: 300px; height: 300px; background: rgba(255,255,255,0.05); top: -150px; right: 10%;"></div>
+        <div class="accent-circle" style="width: 200px; height: 200px; background: rgba(255,255,255,0.05); bottom: -100px; left: 5%;"></div>
+        
+        <div class="container animate__animated animate__fadeIn">
+            <h2 style="color: white; font-weight: 600; margin-bottom: 20px; position: relative; display: inline-block;">Need Financial Assistance?</h2>
+            <div style="width: 60px; height: 3px; background: white; margin: 0 auto 30px;"></div>
+            <p style="max-width: 600px; margin: 20px auto; font-size: 18px; line-height: 1.6;">We offer scholarships and financial aid options to help with your educational expenses. The Biology Department also has a limited equipment loan program for eligible students.</p>
+            <a href="#" class="enhanced-btn light" style="background: white; color: #7161ef; margin-top: 20px; display: inline-block;">Learn More</a>
+        </div>
+    </section>
+
+    <section id="contact" style="padding: 60px 0; text-align: center; position: relative; overflow: hidden; background-image: radial-gradient(circle at 10% 90%, rgba(113,97,239,0.05) 0%, transparent 30%), radial-gradient(circle at 90% 10%, rgba(113,97,239,0.05) 0%, transparent 30%);">
+        <div class="container">
+            <div class="heading-container animate__animated animate__fadeInUp">
+                <h2 class="section-heading">Have Questions?</h2>
+                <p>Contact our First-Year Student Support team for personalized assistance.</p>
+            </div>
+
+            <form action="#" class="animate__animated animate__fadeInUp card" style="padding: 40px; max-width: 800px; margin: 40px auto; text-align: center;">
+                <div class="group" style="display: flex; gap: 20px; margin-bottom: 20px; justify-content: center;">
+                    <input type="text" placeholder="Full Name" style="padding: 12px; border-radius: 8px; border: 1px solid #ddd; flex: 1; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#7161ef'" onmouseout="this.style.borderColor='#ddd'">
+                    <input type="email" placeholder="Email" style="padding: 12px; border-radius: 8px; border: 1px solid #ddd; flex: 1; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#7161ef'" onmouseout="this.style.borderColor='#ddd'">
+                </div>
+                <input type="text" placeholder="Subject" style="padding: 12px; border-radius: 8px; border: 1px solid #ddd; width: 100%; margin-bottom: 20px; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#7161ef'" onmouseout="this.style.borderColor='#ddd'">
+                <textarea placeholder="Your Message" style="padding: 12px; border-radius: 8px; border: 1px solid #ddd; width: 100%; margin-bottom: 20px; min-height: 150px; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#7161ef'" onmouseout="this.style.borderColor='#ddd'"></textarea>
+                <button type="submit" class="enhanced-btn" style="width: 100%; padding: 12px; border-radius: 8px;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="top" style="position: relative;">
+                <div class="left">
+                    <a href="ils.html" class="logo" style="font-size: 28px; font-weight: 700; color: #7161ef; text-decoration: none; position: relative;">ILS
+                        <span style="position: absolute; width: 6px; height: 6px; background: #7161ef; border-radius: 50%; bottom: 5px; right: -8px;"></span>
+                    </a>
+                    <p style="margin-top: 15px; font-style: italic; color: #555;">"When life calls ILS stands tall"</p>
+                </div>
+
+                <div class="right">
+                    <p style="margin-bottom: 10px; color: #555; font-weight: 500;">Follow us on</p>
+                    <div class="social" style="display: flex; gap: 15px;">
+                        <a href="#" style="transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <img src="IMG/facebook-1-svgrepo-com.svg" alt="Facebook" style="width: 24px; height: 24px;">
+                        </a>
+                        <a href="#" style="transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <img src="IMG/telegram-svgrepo-com.svg" alt="Telegram" style="width: 24px; height: 24px;">
+                        </a>
+                        <a href="#" style="transition: all 0.3s ease; transform: translateY(0);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <img src="IMG/tiktok-svgrepo-com.svg" alt="TikTok" style="width: 24px; height: 24px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #777; font-size: 14px;">
+                This website was developed by Carranza from DCpET 2-1 © 2025
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript to enable smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.menu-items').classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

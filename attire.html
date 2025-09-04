@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attire & Uniforms - Institute of Life Sciences</title>
+    <link rel="stylesheet" type="text/css" href="ils.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            z-index: 100;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+        }
+        
+        .dropdown-content a {
+            color: #555;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(113,97,239,0.05);
+            color: #7161ef;
+            padding-left: 25px;
+        }
+        
+        /* Add short underline decoration */
+        .dropdown-content a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 25px;
+            background: #7161ef;
+            transition: width 0.3s ease;
+        }
+        
+        .dropdown-content a:hover::after {
+            width: 30px; /* Short underline - adjust length as needed */
+        }
+        
+        .dropdown > a::after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+
+        /* Enhanced styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9ff;
+            overflow-x: hidden;
+            text-align: center;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(113,97,239,0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(113,97,239,0.05) 0%, transparent 20%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .accent-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(113,97,239,0.1) 0%, rgba(113,97,239,0.2) 100%);
+            z-index: -1;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 0.5; }
+            100% { transform: translateY(-20px) scale(1.05); opacity: 0.7; }
+        }
+        
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            top: 30%;
+            left: -150px;
+        }
+        
+        .accent-2 {
+            width: 400px;
+            height: 400px;
+            bottom: 5%;
+            right: -200px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #7161ef 0%, #5e50d8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #7161ef, #5e50d8);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 15px;
+        }
+
+        /* Enhanced content card styles */
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(113,97,239,0.1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #7161ef, #5e50d8);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .content-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(113,97,239,0.15);
+        }
+        
+        .highlight-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            border-left: 5px solid #7161ef;
+            box-shadow: 0 10px 30px rgba(113,97,239,0.1);
+        }
+        
+        /* Enhanced section styles */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Enhanced header styles */
+        header {
+            padding-top: 120px;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, rgba(113,97,239,0.1) 0%, rgba(113,97,239,0.3) 100%);
+            border-radius: 0 0 50% 50%/0 0 100px 100px;
+            text-align: center;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(113,97,239,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(113,97,239,0.1);
+            top: -150px;
+            left: -150px;
+            z-index: -1;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(113,97,239,0.15);
+            bottom: -100px;
+            right: -50px;
+            z-index: -1;
+            animation: float 8s infinite alternate-reverse ease-in-out;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #7161ef 0%, #5e50d8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(113,97,239,0.2);
+        }
+
+        header h1::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(113,97,239,0.1);
+            top: -30px;
+            left: -30px;
+            z-index: -1;
+            animation: pulse 4s infinite alternate ease-in-out;
+        }
+
+        header h1::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #7161ef, #5e50d8);
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 15px rgba(113,97,239,0.3);
+        }
+        
+        header p {
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 1.3rem;
+            color: #555;
+            text-align: center;
+            line-height: 1.8;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            background: rgba(255,255,255,0.7);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+            width: 100%;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-decoration {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(113,97,239,0.1);
+            animation: float 6s infinite alternate ease-in-out;
+        }
+
+        .decoration-1 {
+            top: 20%;
+            left: 10%;
+            width: 30px;
+            height: 30px;
+        }
+
+        .decoration-2 {
+            top: 40%;
+            right: 15%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .decoration-3 {
+            bottom: 30%;
+            left: 20%;
+            width: 25px;
+            height: 25px;
+        }
+
+        h3 {
+            color: #7161ef;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, #7161ef, #5e50d8);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 10px;
+        }
+        
+        h4 {
+            color: #444;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        /* Enhanced note box styles */
+        .note-box {
+            background: linear-gradient(135deg, rgba(113,97,239,0.1) 0%, rgba(113,97,239,0.2) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(113,97,239,0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .note-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(113,97,239,0.15);
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, rgba(113,97,239,0.1) 0%, rgba(113,97,239,0.2) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(113,97,239,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cta-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(113,97,239,0.15);
+        }
+        
+        .cta-box a {
+            color: #7161ef;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-box a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: #7161ef;
+            transition: width 0.3s ease;
+        }
+        
+        .cta-box a:hover::after {
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .content-card {
+                padding: 25px;
+                margin: 20px auto;
+            }
+
+            .requirements-list.laboratory li {
+                padding: 12px 15px;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative background elements -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="ils.html">ILS</a>
+            </div>
+
+            <div class="menu-items">
+                <a href="ils.html">About</a>
+                <a href="featured.html">Feature</a>
+                <a href="achievers.html">Achievers</a>
+                <div class="dropdown">
+                    <a href="events.html">Events</a>
+                    <div class="dropdown-content">
+                        <a href="birthday-celebrants.html">Birthday Celebrants</a>
+                        <a href="gnb-pup-lopez.html">G. & Bb. PUP Lopez</a>
+                        <a href="ame-knb.html">GAME KNB</a>
+                        <a href="indak-festival.html">Indak Festival</a>
+                        <a href="intramurals.html">Intramurals</a>
+                    </div>
+                </div>
+                <a href="featured.html" class="btn">Explore</a>
+            </div>
+
+            <div class="menu-icon">
+                <img src="IMG/menu-alt-02-svgrepo-com.png" alt="Menu">
+            </div>
+        </nav>
+    </div>
+
+    <header>
+        <h1 class="animate__animated animate__fadeIn">Attire & Uniforms</h1>
+    </header>
+
+    <section id="laboratory-attire">
+        <h2 class="section-title">Laboratory Attire</h2>
+        <div class="content-card">
+            <p>For all laboratory sessions, students must adhere to the following laboratory attire requirements for safety and professional purposes:</p>
+            <div class="requirements-list laboratory">
+                <ul>
+                    <li><strong>Laboratory Coat:</strong> White, full-length laboratory coat with ILS patch sewn on the left sleeve.</li>
+                    <li><strong>Safety Goggles:</strong> Clear safety goggles that provide adequate eye protection during experiments.</li>
+                    <li><strong>Gloves:</strong> Disposable nitrile or latex gloves appropriate for the laboratory work being conducted.</li>
+                    <li><strong>Closed-toe Shoes:</strong> Leather or synthetic material shoes that fully cover the foot. No sandals, mesh shoes, or high heels allowed.</li>
+                    <li><strong>Hair and Accessories:</strong> Long hair must be tied back. Minimal jewelry is permitted for safety reasons.</li>
+                </ul>
+            </div>
+            <div class="note-box">
+                <p><strong>Important:</strong> Students without proper laboratory attire will not be permitted to participate in laboratory sessions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="academic-attire">
+        <h2 class="section-title">Academic & Professional Attire</h2>
+        <div class="content-card">
+            <p>For regular class days and formal events, students are expected to maintain a neat and professional appearance:</p>
+            
+            <h3>Regular Class Days</h3>
+            <div class="requirements-list">
+                <ul>
+                    <li><strong>Male Students:</strong> Collared shirts, slacks or neat jeans, closed shoes. No shorts, sleeveless shirts, or sandals.</li>
+                    <li><strong>Female Students:</strong> Blouses, slacks, skirts of appropriate length, closed shoes. No extremely short skirts, revealing tops, or sandals.</li>
+                </ul>
+            </div>
+            
+            <div class="note-box">
+                <p><strong>Note:</strong> For conferences and external events, business attire is required unless otherwise specified.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="top">
+                <div class="left">
+                    <a href="ils.html" class="logo">ILS</a>
+                    <p>"When life calls ILS stands tall"</p>
+                </div>
+
+                <div class="right">
+                    <p>Follow us on</p>
+                    <div class="social">
+                        <a href="#">
+                            <img src="IMG/facebook-1-svgrepo-com.svg" alt="Facebook">
+                        </a>
+                        <a href="#">
+                            <img src="IMG/telegram-svgrepo-com.svg" alt="Telegram">
+                        </a>
+                        <a href="#">
+                            <img src="IMG/tiktok-svgrepo-com.svg" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                This website was developed by Carranza from DCpET 2-1 © 2025
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            document.querySelector('.menu-items').classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 
